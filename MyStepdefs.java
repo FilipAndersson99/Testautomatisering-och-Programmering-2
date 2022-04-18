@@ -46,13 +46,18 @@ public class MyStepdefs {
         }
     }
 
-    @Then("I receive an error")
-    public boolean iReceiveAnError(WebDriver driver) {
-            String confirmation = driver.getCurrentUrl();
-            if (!confirmation.contains("success")) {
-                return true;
-            } else {
-                return false;
-            }
+    @Then("I am told to enter an e-mail address")
+    public String iAmToldToEnterAnEMailAddress(WebDriver driver) {
+        return driver.findElement(By.className("invalid-error")).getText();
+    }
+
+    @Then("I am told the user name is taken")
+    public String iAmToldTheUserNameIsTaken(WebDriver driver) {
+        return driver.findElement(By.className("invalid-error")).getText();
+    }
+
+    @Then("I am told the user name is too long")
+    public String iAmToldTheUserNameIsTooLong(WebDriver driver) {
+        return driver.findElement(By.className("invalid-error")).getText();
     }
 }
