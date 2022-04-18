@@ -16,9 +16,9 @@ public class Testcases {
         object.iCloseTheCookiePopup(driver);
 
         //Need to remember to change email and username after each test.
-        object.iEnterTheEMailAddress(driver, "memail@gmail.com");
+        object.iEnterTheEMailAddress(driver, "mememail@gmail.com");
 
-        object.iEnterTheUserName(driver, "Name2");
+        object.iEnterTheUserName(driver, "Name3");
 
         object.iEnterThePassword(driver, "Pa5#word");
 
@@ -49,9 +49,9 @@ public class Testcases {
 
         object.iPressTheRegisterButton(driver);
 
-        boolean actual = object.aUserIsRegistered(driver);
+        boolean actual = object.iReceiveAnError(driver);
 
-        assertEquals(false, actual);
+        assertEquals(true, actual);
 
         driver.quit();
     }
@@ -74,9 +74,9 @@ public class Testcases {
 
         object.iPressTheRegisterButton(driver);
 
-        boolean actual = object.aUserIsRegistered(driver);
+        boolean actual = object.iReceiveAnError(driver);
 
-        assertEquals(false, actual);
+        assertEquals(true, actual);
 
         driver.quit();
     }
@@ -91,17 +91,15 @@ public class Testcases {
 
         object.iCloseTheCookiePopup(driver);
 
-        object.iEnterTheEMailAddress(driver, "");
-
         object.iEnterTheUserName(driver, "NameX");
 
         object.iEnterThePassword(driver, "Pa5#word");
 
         object.iPressTheRegisterButton(driver);
 
-        boolean actual = object.aUserIsRegistered(driver);
+        boolean actual = object.iReceiveAnError(driver);
 
-        assertEquals(false, actual);
+        assertEquals(true, actual);
 
         driver.quit();
     }
