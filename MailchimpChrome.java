@@ -1,8 +1,8 @@
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -44,15 +44,22 @@ public class MailchimpChrome {
 
     @io.cucumber.java.en.Then("^A user is registered$")
     public boolean aUserIsRegistered(WebDriver driver) {
-        try {
-            WebElement confirmation = driver.findElement(By.linkText("Re-enter your email and try again"));
-            if (confirmation != null) {
-                return true;
-            }
-        } catch (NoSuchElementException e) {
-            System.out.println("Registration failed.");
+        String confirmation = driver.getCurrentUrl();
+        if (confirmation.contains("success")) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
+    }
+
+    @Then("I receive an error")
+    public boolean iReceiveAnError(WebDriver driver) {
+        String confirmation = driver.getCurrentUrl();
+        if (!confirmation.contains("success")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void iCloseTheCookiePopup(WebDriver driver) {
