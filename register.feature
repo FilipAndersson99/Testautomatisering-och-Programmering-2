@@ -18,7 +18,7 @@ Feature: Register user
 
     When I press the register button
 
-    Then I receive an error
+    Then I am told the user name is too long
 
   Scenario:
     Given I enter the e-mail address "Email"
@@ -27,7 +27,7 @@ Feature: Register user
 
     When I press the register button
 
-    Then I receive an error
+    Then I am told the user name is taken
 
   Scenario:
     Given I enter the user name "Name"
@@ -35,4 +35,4 @@ Feature: Register user
 
     When I press the register button
 
-    Then I receive an error
+    Then I am told to enter an e-mail address
