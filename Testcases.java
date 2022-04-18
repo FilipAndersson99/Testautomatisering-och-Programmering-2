@@ -16,9 +16,9 @@ public class Testcases {
         object.iCloseTheCookiePopup(driver);
 
         //Need to remember to change email and username after each test.
-        object.iEnterTheEMailAddress(driver, "mememail@gmail.com");
+        object.iEnterTheEMailAddress(driver, "mememememail@gmail.com");
 
-        object.iEnterTheUserName(driver, "Name3");
+        object.iEnterTheUserName(driver, "Name5");
 
         object.iEnterThePassword(driver, "Pa5#word");
 
@@ -49,9 +49,11 @@ public class Testcases {
 
         object.iPressTheRegisterButton(driver);
 
-        boolean actual = object.iReceiveAnError(driver);
+        String expected = "Enter a value less than 100 characters long";
 
-        assertEquals(true, actual);
+        String actual = object.iAmToldTheUserNameIsTooLong(driver);
+
+        assertEquals(expected, actual);
 
         driver.quit();
     }
@@ -74,9 +76,11 @@ public class Testcases {
 
         object.iPressTheRegisterButton(driver);
 
-        boolean actual = object.iReceiveAnError(driver);
+        String expected = "Another user with this username already exists. Maybe it's your evil twin. Spooky.";
 
-        assertEquals(true, actual);
+        String actual = object.iAmToldTheUserNameIsTaken(driver);
+
+        assertEquals(expected, actual);
 
         driver.quit();
     }
@@ -97,9 +101,11 @@ public class Testcases {
 
         object.iPressTheRegisterButton(driver);
 
-        boolean actual = object.iReceiveAnError(driver);
+        String expected = "Please enter a value";
 
-        assertEquals(true, actual);
+        String actual = object.iAmToldToEnterAnEMailAddress(driver);
+
+        assertEquals(expected, actual);
 
         driver.quit();
     }
